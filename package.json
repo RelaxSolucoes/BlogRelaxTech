@@ -1,14 +1,14 @@
 {
   "dependencies": {
     "astro-seo": "^0.8.0",
-    "@supabase/supabase-js": "^2.39.1"
+    "@supabase/supabase-js": "^2.39.1",
+    "@astrojs/netlify": "^4.0.1"
   },
   "devDependencies": {
     "astro": "^4.0.7",
     "@astrojs/tailwind": "^5.0.3",
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/react": "^3.0.7",
-    "@astrojs/node": "^7.0.2",
     "@tailwindcss/typography": "^0.5.10"
   },
   "scripts": {
