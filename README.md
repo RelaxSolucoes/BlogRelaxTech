@@ -53,10 +53,9 @@ Este projeto foi desenvolvido com ajuda do [bolt.new](https://bolt.new), que for
 
 O blog utiliza um fluxo automatizado para publicação de conteúdo:
 
-1. Artigos são criados em uma fonte externa (CMS, planilha, etc.)
-2. N8N monitora alterações e sincroniza com o Supabase
-3. Páginas são geradas dinamicamente usando rotas SSR
-4. Conteúdo é disponibilizado instantaneamente sem necessidade de rebuild
+1. Artigos são criados automaticamente com Inteligência Artificial com Integração externa via N8N direto no Banco de Dados.
+2. Páginas são geradas dinamicamente usando rotas SSR
+3. Conteúdo é disponibilizado instantaneamente sem necessidade de rebuild
 
 ## 🚀 Como Executar
 
