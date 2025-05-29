@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 import node from '@astrojs/node';
 
 export default defineConfig({
-  site: 'https://seu-blog.com.br',
+  site: 'https://blog-relax-tech.netlify.app',
   output: 'server',
   adapter: node({
     mode: 'standalone'
