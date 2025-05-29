@@ -1,0 +1,36 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getLatestArticles } from '../../lib/supabase';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+const articles = await getLatestArticles(100); // Aumentei o limite para mostrar mais artigos
+
+const title = 'Todos os Artigos | TechVanguard';
+const description = 'Explore nossa coleção completa de artigos sobre desenvolvimento, inteligência artificial, low-code e no-code.';
+---
+
+<Layout title={title} description={description}>
+  <div class="container-custom py-12">
+    <header class="mb-12 text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Todos os Artigos</h1>
+      <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+        Explore nossa coleção de artigos sobre desenvolvimento, inteligência artificial, 
+        ferramentas low-code e no-code.
+      </p>
+    </header>
+
+    {articles.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map(article => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-16">
+        <p class="text-gray-600 dark:text-gray-400 text-lg">
+          Nenhum artigo encontrado.
+        </p>
+      </div>
+    )}
+  </div>
+</Layout>

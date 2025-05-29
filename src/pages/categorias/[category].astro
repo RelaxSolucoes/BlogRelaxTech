@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getArticlesByCategory, getAllCategories } from '../../lib/supabase';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+export const prerender = false;
+
+const { category } = Astro.params;
+
+// Get all categories to find the matching one
+const categories = await getAllCategories();
+const categoryData = categories.find(cat => 
+  cat.name.toLowerCase().replace(/\s+/g, '-') === category
+);
+
+if (!categoryData) {
+  return Astro.redirect('/404');
+}
+
+// Get articles for the category
+const articles = await getArticlesByCategory(categoryData.name);
+
+// SEO title e description
+const title = `Artigos sobre ${categoryData.name} | TechVanguard`;
+const description = `Confira nossos artigos, tutoriais e dicas sobre ${categoryData.name}. Mantenha-se atualizado com as melhores práticas e tendências.`;
+---
+
+<Layout title={title} description={description}>
+  <div class="container-custom py-12">
+    <header class="mb-12 text-center">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{categoryData.name}</h1>
+      <p class="text-gray-600 dark:text-gray-400 mt-4 max-w-2xl mx-auto">
+        Explore nossos artigos relacionados a {categoryData.name.toLowerCase()}, 
+        com tutoriais, análises e dicas práticas.
+      </p>
+    </header>
+    
+    {articles.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {articles.map(article => (
+          <ArticleCard article={article} />
+        ))}
+      </div>
+    ) : (
+      <div class="text-center py-16">
+        <h2 class="text-2xl font-bold mb-4">Nenhum artigo encontrado</h2>
+        <p class="text-gray-600 dark:text-gray-400 mb-8">
+          Ainda não temos artigos publicados nesta categoria.
+        </p>
+        <a href="/" class="btn btn-primary">Voltar para a página inicial</a>
+      </div>
+    )}
+  </div>
+</Layout>

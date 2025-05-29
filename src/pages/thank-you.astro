@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = 'Obrigado por se inscrever! | TechVanguard';
+const description = 'Agradecemos sua inscrição em nossa newsletter.';
+---
+
+<Layout title={title} description={description}>
+  <div class="container-custom min-h-[70vh] flex items-center justify-center py-16">
+    <div class="max-w-2xl text-center">
+      <h1 class="text-4xl font-bold mb-6">Obrigado por se inscrever!</h1>
+      
+      <p class="text-xl text-gray-600 dark:text-gray-400 mb-8">
+        Seu email foi cadastrado com sucesso em nossa newsletter. Você receberá em primeira mão dicas, 
+        tutoriais e novidades sobre desenvolvimento, inteligência artificial, ferramentas low-code e no-code.
+      </p>
+      
+      <a href="/" class="btn btn-primary">
+        Voltar para a página inicial
+      </a>
+    </div>
+  </div>
+</Layout>

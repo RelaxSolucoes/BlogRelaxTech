@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    @apply antialiased text-gray-900 dark:text-gray-50 bg-white dark:bg-gray-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-gray-900 dark:text-white font-bold;
+  }
+  
+  p {
+    @apply text-gray-800 dark:text-gray-50;
+  }
+  
+  a {
+    @apply text-primary-600 dark:text-primary-300 hover:text-primary-700 dark:hover:text-primary-200 transition duration-200;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-md hover:shadow-lg active:transform active:scale-95;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 focus:ring-primary-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700;
+  }
+
+  .btn-white {
+    @apply bg-white/90 text-gray-900 hover:bg-white dark:bg-white/20 dark:hover:bg-white/30 dark:text-white backdrop-blur-sm shadow-lg focus:ring-white;
+  }
+
+  .btn-outline {
+    @apply bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white/20 dark:border-white/40 dark:hover:border-white/60 dark:hover:bg-white/15 focus:ring-white shadow-lg;
+  }
+  
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-100 dark:border-gray-700/50 overflow-hidden;
+  }
+
+  .form-input {
+    @apply block w-full rounded-xl border-gray-200 dark:border-gray-700 shadow-sm px-4 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+  
+  .featured-gradient {
+    @apply bg-gradient-to-br from-primary-500/10 via-transparent to-secondary-500/10 dark:from-primary-400/5 dark:via-transparent dark:to-secondary-400/5;
+  }
+  
+  .glass-effect {
+    @apply backdrop-blur-lg bg-white/70 dark:bg-gray-800/70;
+  }
+}
+
+/* Article content styling */
+.prose {
+  @apply max-w-none;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply text-gray-900 dark:text-white font-bold;
+}
+
+.prose p,
+.prose ul,
+.prose ol {
+  @apply text-gray-800 dark:text-gray-50;
+}
+
+.prose strong {
+  @apply text-gray-900 dark:text-white font-semibold;
+}
+
+.prose em {
+  @apply text-gray-800 dark:text-gray-50;
+}
+
+.prose blockquote {
+  @apply text-gray-700 dark:text-gray-100 border-l-4 border-primary-500 dark:border-primary-400 pl-4 italic;
+}
+
+.prose blockquote p {
+  @apply text-gray-700 dark:text-gray-100;
+}
+
+.prose a {
+  @apply text-primary-600 dark:text-primary-300 no-underline hover:text-primary-700 dark:hover:text-primary-200;
+}
+
+.prose code {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-50 px-1.5 py-0.5 rounded-md text-sm font-normal border border-gray-200 dark:border-gray-700/50;
+}
+
+.prose pre {
+  @apply bg-gray-100 dark:bg-gray-800 rounded-xl p-4 overflow-x-auto border border-gray-200 dark:border-gray-700/50;
+}
+
+.prose pre code {
+  @apply bg-transparent border-0 p-0 text-gray-900 dark:text-gray-50;
+}
+
+.prose img {
+  @apply rounded-xl shadow-lg my-8;
+}
+
+.prose hr {
+  @apply border-gray-200 dark:border-gray-700/50;
+}
+
+.prose table {
+  @apply border-collapse border border-gray-200 dark:border-gray-700/50;
+}
+
+.prose th {
+  @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 border border-gray-200 dark:border-gray-700/50;
+}
+
+.prose td {
+  @apply px-4 py-2 text-gray-800 dark:text-gray-50 border border-gray-200 dark:border-gray-700/50;
+}
+
+.prose ul > li::before {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+.prose ol > li::before {
+  @apply text-gray-700 dark:text-gray-300;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-200 dark:bg-primary-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-300 dark:bg-primary-600;
+}

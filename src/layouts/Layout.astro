@@ -1,0 +1,98 @@
+---
+import { SEO } from 'astro-seo';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+
+const { 
+  title = 'Relax Tech',
+  description = 'Seu portal de conteúdo sobre desenvolvimento, IA, low-code e no-code.',
+  image,
+  article,
+  pageCanonicalUrl 
+} = Astro.props;
+
+const defaultOgImage = '/images/og-default.jpg';
+const ogImage = typeof image === 'string' && image.length > 0 ? image : defaultOgImage;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <SEO
+      title={title}
+      description={description}
+      canonical={pageCanonicalUrl}
+      openGraph={{
+        basic: {
+          title: title,
+          type: article ? "article" : "website",
+          image: {
+            url: ogImage,
+            alt: "Imagem ilustrativa do conteúdo",
+            type: "image/jpeg",
+            width: 1200,
+            height: 630
+          },
+          url: pageCanonicalUrl,
+        },
+        optional: {
+          description: description,
+          locale: "pt_BR",
+          siteName: "Relax Tech",
+        },
+        article: article
+          ? {
+              publishedTime: new Date().toISOString(),
+              tags: ["desenvolvimento", "ia", "low-code", "no-code"],
+            }
+          : undefined
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: title,
+        description: description,
+        image: ogImage,
+      }}
+    />
+    <script is:inline>
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark';
+        }
+        return 'light';
+      })();
+
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      window.localStorage.setItem('theme', theme);
+
+      document.addEventListener('astro:after-swap', () => {
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      });
+    </script>
+    <ViewTransitions />
+  </head>
+  <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
