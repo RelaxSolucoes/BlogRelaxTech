@@ -8,8 +8,7 @@ export default defineConfig({
   site: 'https://blog-relax-tech.netlify.app',
   output: 'server',
   adapter: netlify({
-    edgeMiddleware: true,
-    functionPerRoute: true
+    edgeMiddleware: true
   }),
   integrations: [
     tailwind(),
